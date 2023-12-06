@@ -11,63 +11,76 @@ class Test {
 
 	//Validos
 	
-	//Algun valor ingresado es negativo (primer digito)
+	//Resta con algun digito negativo (primer digito)
 	@org.junit.jupiter.api.Test
 	void testGetResta1() {
 		context = new OperacionAritmetica( new Resta());
 		assertEquals(context.procesar(-5,10), -1);
 	}
 	
-	//Algun valor ingresado es negativo (segundo digito)
+	//Resta con algun digito negativo(segundo digito)
 	@org.junit.jupiter.api.Test
 	void testGetResta2() {
 		context = new OperacionAritmetica( new Resta());
 		assertEquals(context.procesar(5,-10), -1);
 	}
+	
+	//Resta con el primer digito igual al segundo
+	@org.junit.jupiter.api.Test
+	void testGetResta3() {
+		context = new OperacionAritmetica( new Resta());
+		assertEquals(context.procesar(5,5), 0);
+	}
 
-	//Algun valor ingresado es negativo (ambos digitos)
+	//Division con algun digito negativo (ambos digitos)
 	@org.junit.jupiter.api.Test
 	void testGetDivision1() {
 		context = new OperacionAritmetica( new Division());
 		assertEquals(context.procesar(-1, -2), -1);
 	}
 	
-	//Segundo digito mayor al primero
+	//Resta con el segundo digito mayor al primero
 	@org.junit.jupiter.api.Test
-	void testGetResta3() {
+	void testGetResta4() {
 		context = new OperacionAritmetica( new Resta());
 		assertEquals(context.procesar(10,20), -2);
 	}
 	
-	//Se realiza una division entre cero
+	//Division entre cero
 	@org.junit.jupiter.api.Test
 	void testGetDivision2() {
 		context = new OperacionAritmetica( new Division());
 		assertEquals(context.procesar(10,0), -3);
 	}
 	
-	
-	//Invalidos
-	
-	//Solo digitos positivos
-		@org.junit.jupiter.api.Test
-		void testGetResta5() {
-			context = new OperacionAritmetica( new Resta());
-			assertNotEquals(context.procesar(5,10), -1);
-		}
-		
-		//Primer digito mayor al segundo
-		@org.junit.jupiter.api.Test
-		void testGetResta6() {
-			context = new OperacionAritmetica( new Resta());
-			assertNotEquals(context.procesar(20,10), -2);
-		}
-		
-		//No se realiza una division entre cero
+	//Division con el primer digito igual al segundo
 		@org.junit.jupiter.api.Test
 		void testGetDivision3() {
 			context = new OperacionAritmetica( new Division());
-			assertNotEquals(context.procesar(9,3), -3);
+			assertEquals(context.procesar(9,9), 1);
 		}
+		
+	//Invalidos
+
+	//Resta de digitos positivos
+	@org.junit.jupiter.api.Test
+	void testGetResta5() {
+		context = new OperacionAritmetica( new Resta());
+		assertNotEquals(context.procesar(5,10), -1);
+	}
+	
+	//Resta con el primer digito mayor al segundo
+	@org.junit.jupiter.api.Test
+	void testGetResta6() {
+		context = new OperacionAritmetica( new Resta());
+		assertNotEquals(context.procesar(20,10), -2);
+	}
+	
+	//No se realiza una division entre cero
+	@org.junit.jupiter.api.Test
+	void testGetDivision4() {
+		context = new OperacionAritmetica( new Division());
+		assertNotEquals(context.procesar(9,3), -3);
+	}
 	
 }
